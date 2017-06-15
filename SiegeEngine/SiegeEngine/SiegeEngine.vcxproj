@@ -19,7 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\include\IAudio.h" />
     <ClInclude Include="src\include\IGraphics.h" />
+    <ClInclude Include="src\include\IInput.h" />
+    <ClInclude Include="src\include\IPhysics.h" />
+    <ClInclude Include="src\include\IScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
