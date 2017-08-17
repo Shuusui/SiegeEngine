@@ -1,0 +1,3 @@
+LIBRARY "SEngineObjLoader.dll"
+EXPORTS
+CreateLoader

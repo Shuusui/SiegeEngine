@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\Instances">
+      <UniqueIdentifier>{8b955b01-cc95-4e92-9b4e-e4cd9a0527d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Instances">
+      <UniqueIdentifier>{ac5a606f-3400-4c92-9ab6-65fe31b6cce3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\InternalFiles">
+      <UniqueIdentifier>{daf1f179-2566-4723-8352-b8587738fcfd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DefaultWindow.cpp">
+      <Filter>Quelldateien\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TransformComponent.cpp">
+      <Filter>Quelldateien\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PlayModes.cpp">
+      <Filter>Quelldateien\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EmptyGameObject.cpp">
+      <Filter>Quelldateien\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DefaultScene.cpp">
+      <Filter>Quelldateien\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EngineManager.cpp">
+      <Filter>Quelldateien\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>Quelldateien\Instances</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\include\DefaultWindow.h">
+      <Filter>Headerdateien\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\TransformComponent.h">
+      <Filter>Headerdateien\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\PlayModes.h">
+      <Filter>Headerdateien\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\EmptyGameObject.h">
+      <Filter>Headerdateien\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\DefaultScene.h">
+      <Filter>Headerdateien\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\EngineManager.h">
+      <Filter>Headerdateien\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\Camera.h">
+      <Filter>Headerdateien\Instances</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TestP.Shader" />
+    <None Include="TestV.Shader" />
+    <None Include="Test.Shader" />
+  </ItemGroup>
+</Project>

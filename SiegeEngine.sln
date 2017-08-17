@@ -1,0 +1,97 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SiegeEngine", "SiegeEngine\SiegeEngine.vcxproj", "{97982628-3B7D-43B9-967F-C669A1013AFB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B84EC215-38FA-4F9A-8BBB-18649835FFF2} = {B84EC215-38FA-4F9A-8BBB-18649835FFF2}
+		{A78E011A-57BA-4040-BC80-7FB441EFB7CD} = {A78E011A-57BA-4040-BC80-7FB441EFB7CD}
+		{644BE3AA-DE61-47EC-9302-57DE29401E13} = {644BE3AA-DE61-47EC-9302-57DE29401E13}
+		{26D546F2-29DD-4CAB-877D-137CFC5539E9} = {26D546F2-29DD-4CAB-877D-137CFC5539E9}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEngineMathlib", "SEngineMathlib\SEngineMathlib.vcxproj", "{26D546F2-29DD-4CAB-877D-137CFC5539E9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEngineGraphics", "SEngineGraphics\SEngineGraphics.vcxproj", "{A78E011A-57BA-4040-BC80-7FB441EFB7CD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B84EC215-38FA-4F9A-8BBB-18649835FFF2} = {B84EC215-38FA-4F9A-8BBB-18649835FFF2}
+		{644BE3AA-DE61-47EC-9302-57DE29401E13} = {644BE3AA-DE61-47EC-9302-57DE29401E13}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEngineObjLoader", "SEngineObjLoader\SEngineObjLoader.vcxproj", "{B84EC215-38FA-4F9A-8BBB-18649835FFF2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEngineLib", "SEngineLib\SEngineLib.vcxproj", "{644BE3AA-DE61-47EC-9302-57DE29401E13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97982628-3B7D-43B9-967F-C669A1013AFB}.Debug|x64.ActiveCfg = Debug|x64
+		{97982628-3B7D-43B9-967F-C669A1013AFB}.Debug|x64.Build.0 = Debug|x64
+		{97982628-3B7D-43B9-967F-C669A1013AFB}.Debug|x86.ActiveCfg = Debug|Win32
+		{97982628-3B7D-43B9-967F-C669A1013AFB}.Debug|x86.Build.0 = Debug|Win32
+		{97982628-3B7D-43B9-967F-C669A1013AFB}.Release|x64.ActiveCfg = Release|x64
+		{97982628-3B7D-43B9-967F-C669A1013AFB}.Release|x64.Build.0 = Release|x64
+		{97982628-3B7D-43B9-967F-C669A1013AFB}.Release|x86.ActiveCfg = Release|Win32
+		{97982628-3B7D-43B9-967F-C669A1013AFB}.Release|x86.Build.0 = Release|Win32
+		{26D546F2-29DD-4CAB-877D-137CFC5539E9}.Debug|x64.ActiveCfg = Debug|x64
+		{26D546F2-29DD-4CAB-877D-137CFC5539E9}.Debug|x64.Build.0 = Debug|x64
+		{26D546F2-29DD-4CAB-877D-137CFC5539E9}.Debug|x64.Deploy.0 = Debug|x64
+		{26D546F2-29DD-4CAB-877D-137CFC5539E9}.Debug|x86.ActiveCfg = Debug|Win32
+		{26D546F2-29DD-4CAB-877D-137CFC5539E9}.Debug|x86.Build.0 = Debug|Win32
+		{26D546F2-29DD-4CAB-877D-137CFC5539E9}.Release|x64.ActiveCfg = Release|x64
+		{26D546F2-29DD-4CAB-877D-137CFC5539E9}.Release|x64.Build.0 = Release|x64
+		{26D546F2-29DD-4CAB-877D-137CFC5539E9}.Release|x86.ActiveCfg = Release|Win32
+		{26D546F2-29DD-4CAB-877D-137CFC5539E9}.Release|x86.Build.0 = Release|Win32
+		{A78E011A-57BA-4040-BC80-7FB441EFB7CD}.Debug|x64.ActiveCfg = Debug|x64
+		{A78E011A-57BA-4040-BC80-7FB441EFB7CD}.Debug|x64.Build.0 = Debug|x64
+		{A78E011A-57BA-4040-BC80-7FB441EFB7CD}.Debug|x86.ActiveCfg = Debug|Win32
+		{A78E011A-57BA-4040-BC80-7FB441EFB7CD}.Debug|x86.Build.0 = Debug|Win32
+		{A78E011A-57BA-4040-BC80-7FB441EFB7CD}.Release|x64.ActiveCfg = Release|x64
+		{A78E011A-57BA-4040-BC80-7FB441EFB7CD}.Release|x64.Build.0 = Release|x64
+		{A78E011A-57BA-4040-BC80-7FB441EFB7CD}.Release|x86.ActiveCfg = Release|Win32
+		{A78E011A-57BA-4040-BC80-7FB441EFB7CD}.Release|x86.Build.0 = Release|Win32
+		{B84EC215-38FA-4F9A-8BBB-18649835FFF2}.Debug|x64.ActiveCfg = Debug|x64
+		{B84EC215-38FA-4F9A-8BBB-18649835FFF2}.Debug|x64.Build.0 = Debug|x64
+		{B84EC215-38FA-4F9A-8BBB-18649835FFF2}.Debug|x86.ActiveCfg = Debug|Win32
+		{B84EC215-38FA-4F9A-8BBB-18649835FFF2}.Debug|x86.Build.0 = Debug|Win32
+		{B84EC215-38FA-4F9A-8BBB-18649835FFF2}.Release|x64.ActiveCfg = Release|x64
+		{B84EC215-38FA-4F9A-8BBB-18649835FFF2}.Release|x64.Build.0 = Release|x64
+		{B84EC215-38FA-4F9A-8BBB-18649835FFF2}.Release|x86.ActiveCfg = Release|Win32
+		{B84EC215-38FA-4F9A-8BBB-18649835FFF2}.Release|x86.Build.0 = Release|Win32
+		{644BE3AA-DE61-47EC-9302-57DE29401E13}.Debug|x64.ActiveCfg = Debug|x64
+		{644BE3AA-DE61-47EC-9302-57DE29401E13}.Debug|x64.Build.0 = Debug|x64
+		{644BE3AA-DE61-47EC-9302-57DE29401E13}.Debug|x86.ActiveCfg = Debug|Win32
+		{644BE3AA-DE61-47EC-9302-57DE29401E13}.Debug|x86.Build.0 = Debug|Win32
+		{644BE3AA-DE61-47EC-9302-57DE29401E13}.Release|x64.ActiveCfg = Release|x64
+		{644BE3AA-DE61-47EC-9302-57DE29401E13}.Release|x64.Build.0 = Release|x64
+		{644BE3AA-DE61-47EC-9302-57DE29401E13}.Release|x86.ActiveCfg = Release|Win32
+		{644BE3AA-DE61-47EC-9302-57DE29401E13}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://josai.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SiegeEngine\\SiegeEngine.vcxproj
+		SccProjectName1 = SiegeEngine
+		SccLocalPath1 = SiegeEngine
+		SccProjectUniqueName2 = SEngineGraphics\\SEngineGraphics.vcxproj
+		SccProjectName2 = SEngineGraphics
+		SccLocalPath2 = SEngineGraphics
+		SccProjectUniqueName3 = SEngineObjLoader\\SEngineObjLoader.vcxproj
+		SccProjectName3 = SEngineObjLoader
+		SccLocalPath3 = SEngineObjLoader
+		SccProjectUniqueName4 = SEngineLib\\SEngineLib.vcxproj
+		SccProjectName4 = SEngineLib
+		SccLocalPath4 = SEngineLib
+	EndGlobalSection
+EndGlobal
