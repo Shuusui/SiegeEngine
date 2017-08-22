@@ -51,6 +51,9 @@
     <ClInclude Include="source\include\Color.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="source\include\Color.hpp">
+      <Filter>HeaderFilesWithCode</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Matrix.cpp">
@@ -63,6 +66,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="source\Vector4.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="source\include\Color.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\include\Color.h" />
+    <ClInclude Include="source\include\Color.hpp" />
     <ClInclude Include="source\include\MakroDefines.h" />
     <ClInclude Include="source\include\Matrix.h" />
     <ClInclude Include="source\include\Matrix.hpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="source\include\Vector4.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\include\Color.cpp" />
     <ClCompile Include="source\Matrix.cpp" />
     <ClCompile Include="source\Vector2.cpp" />
     <ClCompile Include="source\Vector3.cpp" />
