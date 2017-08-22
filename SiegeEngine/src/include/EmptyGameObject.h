@@ -68,6 +68,7 @@ namespace SEngine
 		///
 		///Member Variables
 		///
+#pragma region Member Variables
 		const char* m_Name;
 		std::vector<IComponent*> m_Components;
 		uint32 m_Index; 
@@ -76,5 +77,6 @@ namespace SEngine
 		Vector4 m_WorldPos;
 		Vector4 m_WorldRot;
 		Vector4 m_WorldScale;
+#pragma endregion
 	};
 }
