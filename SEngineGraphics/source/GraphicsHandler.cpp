@@ -7,6 +7,7 @@ SEngineGraphics::GraphicsHandler::GraphicsHandler()
 	,m_WndHeight(NULL)
 {
 	m_DX11 = new DirectX11();
+	m_OpenGL = new OpenGL();
 }
 
 void SEngineGraphics::GraphicsHandler::Init(uint16 wndWidth, uint16 wndHeight)
@@ -19,6 +20,7 @@ void SEngineGraphics::GraphicsHandler::Init(uint16 wndWidth, uint16 wndHeight)
 	}
 	else if (m_GraphicsIndex == 1)
 	{
+		m_OpenGL->Init(wndWidth, wndHeight);
 	}
 }
 void SEngineGraphics::GraphicsHandler::Run()
@@ -29,7 +31,7 @@ void SEngineGraphics::GraphicsHandler::Run()
 	}
 	else if (m_GraphicsIndex == 1)
 	{
-
+		m_OpenGL->ClearScreen();
 	}
 }
 void SEngineGraphics::GraphicsHandler::ShutDown()
@@ -39,7 +41,9 @@ void SEngineGraphics::GraphicsHandler::ShutDown()
 		m_DX11->ShutDown(); 
 	}
 	else if(m_GraphicsIndex == 1)
-	{ }
+	{
+		m_OpenGL->Exit();
+	}
 }
 void SEngineGraphics::GraphicsHandler::SetWindowHandle(HWND hwnd)
 {
@@ -49,7 +53,7 @@ void SEngineGraphics::GraphicsHandler::SetWindowHandle(HWND hwnd)
 	}
 	else if (m_GraphicsIndex == 1)
 	{
-
+		m_OpenGL->SetWindowHandle(hwnd);
 	}
 }
 void SEngineGraphics::GraphicsHandler::ChangeGraphicsAPI(uint8f from, uint8f to)
@@ -59,12 +63,13 @@ void SEngineGraphics::GraphicsHandler::ChangeGraphicsAPI(uint8f from, uint8f to)
 		m_DX11->ShutDown();
 		if (to == 1)
 		{
-			//TODO: include openGL here
+			m_OpenGL->Init(m_WndHeight, m_WndWidth); 
+			m_OpenGL->ClearScreen();
 		}
 	}
 	else if (from == 1)
 	{
-		//TODO: include openGL here
+		m_OpenGL->Exit();
 		{
 			if (to == 0)
 			{

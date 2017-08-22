@@ -104,6 +104,8 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)\SiegeEngine\bin\$(Platform)\module\</OutDir>
     <IntDir>.\intermediate\$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64;$(DXSDK_DIR)Lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -112,12 +114,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;SENGINEGRAPHICS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\SEngineMathlib\source\include;$(SolutionDir)\SEngineLib\source\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\dependencies\glew-2.1.0\include\GL;$(SolutionDir)\SEngineMathlib\source\include;$(SolutionDir)\SEngineLib\source\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>opengl32.lib;D3DCompiler.lib;d3dx11.lib;$(SolutionDir)\SiegeEngine\bin\mathlib\$(Platform)\$(Configuration);$(SolutionDir)\SiegeEngine\bin\enginelib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>D3DCompiler.lib;D3D11.lib;SEngineMathlib.lib;SEngineLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\glew-2.1.0\lib\Release\x64;D3DCompiler.lib;d3dx11.lib;$(SolutionDir)\SiegeEngine\bin\mathlib\$(Platform)\$(Configuration);$(SolutionDir)\SiegeEngine\bin\enginelib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;D3DCompiler.lib;D3D11.lib;SEngineMathlib.lib;SEngineLib.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>SEngine.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
@@ -160,15 +162,15 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;SENGINEGRAPHICS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\SEngineMathlib\source\include;$(SolutionDir)\SEngineLib\source\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\dependencies\glew-2.1.0\include\GL;$(SolutionDir)\SEngineMathlib\source\include;$(SolutionDir)\SEngineLib\source\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>SEngine.def</ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>opengl32.lib;D3DCompiler.lib;d3dx11.lib;$(SolutionDir)\SiegeEngine\bin\mathlib\$(Platform)\$(Configuration);$(SolutionDir)\SiegeEngine\bin\enginelib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>D3DCompiler.lib;D3D11.lib;SEngineMathlib.lib;SEngineLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\glew-2.1.0\lib\Release\x64;D3DCompiler.lib;d3dx11.lib;$(SolutionDir)\SiegeEngine\bin\mathlib\$(Platform)\$(Configuration);$(SolutionDir)\SiegeEngine\bin\enginelib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glew32.lib;D3DCompiler.lib;D3D11.lib;SEngineMathlib.lib;SEngineLib.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

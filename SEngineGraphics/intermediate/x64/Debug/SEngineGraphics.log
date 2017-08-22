@@ -1,6 +1,7 @@
 ﻿  OpenGL.cpp
-  Code wird generiert...
-  Überspringen... (keine relevanten Änderungen gefunden)
   GraphicsHandler.cpp
-  SEngineGraphics.vcxproj -> D:\Repos\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineGraphics.dll
-  SEngineGraphics.vcxproj -> D:\Repos\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineGraphics.pdb (Partial PDB)
+d:\siegeengine-master\siegeengine-master\senginemathlib\source\include\vector4.hpp(117): warning C4244: "=": Konvertierung von "const int32" in "float", möglicher Datenverlust
+  Code wird generiert...
+     Bibliothek "D:\SiegeEngine-master\SiegeEngine-master\\SiegeEngine\bin\x64\module\SEngineGraphics.lib" und Objekt "D:\SiegeEngine-master\SiegeEngine-master\\SiegeEngine\bin\x64\module\SEngineGraphics.exp" werden erstellt.
+  SEngineGraphics.vcxproj -> D:\SiegeEngine-master\SiegeEngine-master\\SiegeEngine\bin\x64\module\SEngineGraphics.dll
+  SEngineGraphics.vcxproj -> D:\SiegeEngine-master\SiegeEngine-master\\SiegeEngine\bin\x64\module\SEngineGraphics.pdb (Partial PDB)
