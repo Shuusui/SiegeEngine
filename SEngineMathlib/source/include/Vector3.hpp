@@ -74,7 +74,13 @@ __forceinline void SEngine::Vector3::SetVector(Vector3& vec0)
 	Vector3::Y = vec0.Y;
 	Vector3::Z = vec0.Z;
 }
-
+//Setter function which sets all of the variables of the Vector3 to null
+__forceinline void SEngine::Vector3::SetNull()
+{
+	Vector3::X = 0; 
+	Vector3::Y = 0; 
+	Vector3::Z = 0;
+}
 __forceinline float SEngine::Vector3::Length()
 {
 	float length = sqrt(pow(Vector3::X, 2) + pow(Vector3::Y, 2) + pow(Vector3::Z, 2));

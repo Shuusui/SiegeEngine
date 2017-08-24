@@ -62,7 +62,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Test.cpp">
+    <ClCompile Include="source\Test.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,16 +1,2 @@
-﻿  ObjLoader.cpp
-d:\repos\siegeengine\senginemathlib\source\include\vector4.hpp(117): warning C4244: "=": Konvertierung von "const int32" in "float", möglicher Datenverlust
-d:\repos\siegeengine\sengineobjloader\source\objloader.cpp(28): warning C4244: "Initialisierung": Konvertierung von "std::streamoff" in "uint32", möglicher Datenverlust
-d:\repos\siegeengine\sengineobjloader\source\objloader.cpp(83): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-d:\repos\siegeengine\sengineobjloader\source\objloader.cpp(91): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-d:\repos\siegeengine\sengineobjloader\source\objloader.cpp(99): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-d:\repos\siegeengine\sengineobjloader\source\objloader.cpp(111): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-d:\repos\siegeengine\sengineobjloader\source\objloader.cpp(117): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-d:\repos\siegeengine\sengineobjloader\source\objloader.cpp(143): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-d:\repos\siegeengine\sengineobjloader\source\objloader.cpp(152): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-d:\repos\siegeengine\sengineobjloader\source\objloader.cpp(161): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-d:\repos\siegeengine\sengineobjloader\source\objloader.cpp(183): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-d:\repos\siegeengine\sengineobjloader\source\objloader.cpp(191): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
-     Bibliothek "D:\Repos\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineObjLoader.lib" und Objekt "D:\Repos\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineObjLoader.exp" werden erstellt.
-  SEngineObjLoader.vcxproj -> D:\Repos\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineObjLoader.dll
-  SEngineObjLoader.vcxproj -> D:\Repos\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineObjLoader.pdb (Partial PDB)
+﻿  SEngineObjLoader.vcxproj -> D:\SiegeEngine-master\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineObjLoader.dll
+  SEngineObjLoader.vcxproj -> D:\SiegeEngine-master\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineObjLoader.pdb (Partial PDB)

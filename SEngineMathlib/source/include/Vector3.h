@@ -39,6 +39,7 @@ namespace SEngine
 		__forceinline void SetY(int32 y); 
 		__forceinline void SetZ(int32 z); 
 		__forceinline void SetVector(Vector3& vec0);
+		__forceinline void SetNull();
 
 	  //normal functions
 		__forceinline float Length();

@@ -1,4 +1,5 @@
 #include "include\GraphicsHandler.h"
+//Default Constructor of the GraphicsHandler
 SEngineGraphics::GraphicsHandler::GraphicsHandler()
 	:m_GraphicsIndex(NULL)
 	,m_DX11(nullptr)
@@ -9,7 +10,7 @@ SEngineGraphics::GraphicsHandler::GraphicsHandler()
 	m_DX11 = new DirectX11();
 	m_OpenGL = new OpenGL();
 }
-
+//Initialize the current GraphicsAPI 
 void SEngineGraphics::GraphicsHandler::Init(uint16 wndWidth, uint16 wndHeight)
 {
 	m_WndWidth = wndWidth; 
@@ -20,9 +21,15 @@ void SEngineGraphics::GraphicsHandler::Init(uint16 wndWidth, uint16 wndHeight)
 	}
 	else if (m_GraphicsIndex == 1)
 	{
-		m_OpenGL->Init(wndWidth, wndHeight);
+		if (!m_OpenGL->Init(wndWidth, wndHeight))
+		{
+			SetGraphicsAPI(0);
+			m_DX11->Init(wndWidth, wndHeight); 
+			printf("OpenGL couldn't initialize, the default GraphicsAPI(DX11) will start");
+		}
 	}
 }
+//The Run() function of the current GraphicsAPI
 void SEngineGraphics::GraphicsHandler::Run()
 {
 	if (m_GraphicsIndex == 0)
@@ -34,6 +41,7 @@ void SEngineGraphics::GraphicsHandler::Run()
 		m_OpenGL->ClearScreen();
 	}
 }
+//Shut Down the current GraphicsAPI
 void SEngineGraphics::GraphicsHandler::ShutDown()
 {
 	if (m_GraphicsIndex == 0)
@@ -45,6 +53,7 @@ void SEngineGraphics::GraphicsHandler::ShutDown()
 		m_OpenGL->Exit();
 	}
 }
+//Set the WindowHandle for the GraphicsAPI 
 void SEngineGraphics::GraphicsHandler::SetWindowHandle(HWND hwnd)
 {
 	if (m_GraphicsIndex == 0)
@@ -56,6 +65,7 @@ void SEngineGraphics::GraphicsHandler::SetWindowHandle(HWND hwnd)
 		m_OpenGL->SetWindowHandle(hwnd);
 	}
 }
+//Switch the GraphicsAPI 
 void SEngineGraphics::GraphicsHandler::ChangeGraphicsAPI(uint8f from, uint8f to)
 {
 	if (from == 0)
@@ -89,12 +99,14 @@ void SEngineGraphics::GraphicsHandler::SetGraphicsAPI(uint8f index)
 {
 	m_GraphicsIndex = index; 
 }
+//Creates the GraphicsDLL 
 SEngine::IGraphics* SEngineGraphics::GraphicsHandler::CreateGraphics()
 {
 	static SEngine::IGraphics* graphics = nullptr;
 	graphics = new GraphicsHandler();
 	return graphics;
 }
+//Destructor of the GraphicsHandler
 SEngineGraphics::GraphicsHandler::~GraphicsHandler()
 {
 	delete m_DX11; 

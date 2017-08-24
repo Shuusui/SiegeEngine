@@ -45,7 +45,7 @@ VS_OUTPUT VSMain( VS_INPUT Input )
     
 	Output.vPosition = float4(Input.vPosition,1);
 	Output.vNormal = Input.vNormal;
-    	Output.vTexcoord = Input.vTexcoord;
+    Output.vTexcoord = Input.vTexcoord;
 	Output.vColor = Input.vColor;
     
     return Output;

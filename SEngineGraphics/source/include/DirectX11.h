@@ -21,7 +21,7 @@
 
 ///
 ///
-///Header file for the directX11 class
+///Header file for the directX11 class. It'S the default GraphicsAPI for this engine
 ///
 ///
 namespace SEngineGraphics

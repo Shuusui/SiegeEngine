@@ -128,7 +128,7 @@ void SEngineGraphics::DirectX11::InitPipeline()
 		SafeRelease(errorBlob);
 		return; 
 	}
-	hr = D3DCompileFromFile(L"TestP.Shader", nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE/*nullptr*/, "PSMain", "ps_4_0", 0, 0, &PixelShader, &errorBlob);
+	hr = D3DCompileFromFile(L"TestP.Shader", nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "PSMain", "ps_4_0", 0, 0, &PixelShader, &errorBlob);
 	if (Failed(hr))
 	{
 		OutputDebugStringA((char*)errorBlob->GetBufferPointer());
