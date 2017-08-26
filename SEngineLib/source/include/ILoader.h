@@ -11,6 +11,12 @@
 ///
 namespace SEngine
 {
+	///Create a struct to get all informations in one 
+	struct OBJECT
+	{
+		char ObjectName[256]{ 0 };
+		std::vector<std::vector<Vector3>> VertexData;
+	};
 	class ILoader
 	{
 	public: 
@@ -19,6 +25,13 @@ namespace SEngine
 		///
 		virtual void LoadFile(const char* strFileName) = 0; 
 		///
+		///pure virtual function to get the Object from the file 
+		///
+		virtual OBJECT GetObjectData() = 0; 
+
+
+
+		/*///
 		///pure virtual function to Get the vertices out of the file
 		///
 		virtual std::vector<SEngine::Vector4> GetVertices() = 0;
@@ -32,7 +45,7 @@ namespace SEngine
 		virtual std::vector<Vector2> GetTexCoords() = 0; 
 		///
 		///virtual Destructor
-		///
+		///*/
 		//virtual ~ILoader() = 0;
 	};
 }

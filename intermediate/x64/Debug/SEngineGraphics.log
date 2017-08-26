@@ -1,0 +1,12 @@
+﻿  DirectX11.cpp
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\vector4.hpp(117): warning C4244: "=": Konvertierung von "const int32" in "float", möglicher Datenverlust
+d:\siegeengine-master\siegeengine\senginegraphics\source\directx11.cpp(193): error C2065: "tempVertSize": nichtdeklarierter Bezeichner
+d:\siegeengine-master\siegeengine\senginegraphics\source\directx11.cpp(212): error C2065: "Vertices": nichtdeklarierter Bezeichner
+d:\siegeengine-master\siegeengine\senginegraphics\source\directx11.cpp(214): error C2065: "Vertices": nichtdeklarierter Bezeichner
+d:\siegeengine-master\siegeengine\senginegraphics\source\directx11.cpp(214): error C2541: "delete": Objekte, die keine Zeiger sind, können nicht gelöscht werden
+  Code wird generiert...
+  Kompilieren...
+  GraphicsHandler.cpp
+d:\siegeengine-master\siegeengine\senginegraphics\source\graphicshandler.cpp : fatal error C1041: Programmdatenbank "D:\SiegeEngine-master\SiegeEngine\SEngineGraphics\intermediate\x64\Debug\vc141.pdb" kann nicht geöffnet werden; verwenden Sie /FS, wenn mehrere CL.EXE in dieselbe .PDB-Datei schreiben
+  Code wird generiert...
+cl : Befehlszeile warning D9028: Fehler beim minimalen Neukompilieren, normale Erstellung wird durchgeführt.

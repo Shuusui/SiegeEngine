@@ -35,25 +35,17 @@ namespace SEngine
 		///
 		void LoadFile(const char* strFilename) override;
 		///
+		///Fill the ObjectStruct with all of the Data
+		///
+		void FillStruct(); 
+		///
 		///Create the DLL for the ObjLoader
 		///
 		ILoader* CreateLoader(); // TODO: change the location of this function 
-		/// 
-		///Get the vertices read out of the obj file
 		///
-		std::vector<Vector4> GetVertices() override;
+		///Get the whole Object from the ObjFile
 		///
-		/// Get the faces read out of the obj file
-		///
-		std::vector<std::vector<Vector3>> GetFaces();
-		/// 
-		///Get the normals read out of the obj file
-		///
-		std::vector<Vector3> GetNormals()override;
-		///
-		///Get the Texture Coordinates read out of the file
-		///
-		std::vector<Vector2> GetTexCoords()override;
+		OBJECT GetObjectData();
 		///
 		///Default Destructor 
 		///
@@ -73,6 +65,7 @@ namespace SEngine
 		std::vector<Vector3> m_VertexDataFaces;
 		std::vector<Vector3> m_Normals;
 		std::vector<Vector2> m_TexCoords;
+		OBJECT* m_ResultObject;
 #pragma endregion
 	};
 }

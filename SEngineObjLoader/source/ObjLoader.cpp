@@ -2,6 +2,7 @@
 //default constructor
 SEngine::ObjLoader::ObjLoader()
 	:m_SmoothGroups(0)
+	, m_ResultObject(nullptr)
 {
 }
 //Create the dll
@@ -31,7 +32,7 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 	//read out the objfile
 	while (!file.eof())
 	{
-		char buffer[256];
+		char* buffer = new char[256];
 		file.getline(buffer, 256);
 		///pass the line whenver there is a #
 		if (buffer[0] == '#')
@@ -71,7 +72,7 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 		///read out the vertices of the obj file
 		else if (buffer[0] == 'v' && buffer[1] == ' ')
 		{
-			char tempBuffer[50];
+			char* tempBuffer = new char[50];
 			uint8 count = 2;
 			uint8 counter = 0;
 			Vector4 tempVec4(0, 0, 0, 0);
@@ -128,11 +129,12 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 					break;
 				}
 			}
+			delete[] tempBuffer;
 		}
 		///read out the normals of the objfile
 		else if (buffer[0] == 'v' && buffer[1] == 'n')
 		{
-			char tempBuffer[50];
+			char* tempBuffer = new char[50];
 			uint8 count = 3;
 			uint8 counter = 0;
 			Vector3 tempVec3(0, 0, 0);
@@ -171,11 +173,12 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 					break;
 				}
 			}
+			delete[] tempBuffer;
 		}
 		///read out the texcoords of the objfile
 		else if (buffer[0] == 'v' && buffer[1] == 't')
 		{
-			char tempBuffer[50];
+			char* tempBuffer = new char[50];
 			uint8 count = 3;
 			uint8 counter = 0;
 			Vector2 tempVec2(0, 0);
@@ -204,6 +207,7 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 				break;
 				}
 			}
+			delete[] tempBuffer;
 		}
 		///read out the groupname
 		else if (buffer[0] == 'g')
@@ -238,7 +242,7 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 		///read out the smoothgroups
 		else if (buffer[0] == 's' && buffer[2] != 'o')
 		{
-			char tempBuffer[2];
+			char* tempBuffer = new char[2];
 			for (uint8 i = 0; i < 2; i++)
 			{
 				if (buffer[i + 2] != '\0')
@@ -252,36 +256,42 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 				}
 
 			}
+			delete[] tempBuffer;
 		}
 		///read the faces of the obj file
 		else if (buffer[0] == 'f')
 		{
 			SEngine::Vector3 tempVec3(0,0,0);
-			bool is2D = false; 
-			char tempBuffer[20];
-			for (uint8 i = 3; i < 256; i++)
+			bool hasTexCoords = false; 
+			char* tempBuffer = new char[15];
+			uint8 count = 0;
+			for (uint8 i = 2; i < 256; i++)
 			{
-				if (buffer[i] != '/' && buffer[i] != ' ' && buffer[i] != '/0')
+				if (buffer[i] != '/' && buffer[i] != ' ' && buffer[i] != '\0')
 				{
-					tempBuffer[i - 3] = buffer[i];
+					tempBuffer[count] = buffer[i];
+					count++;
 					continue;
 				}
 				else if (buffer[i] == '/' && buffer[i+1] != '/')					
 				{
 					if (tempVec3.GetX() == NULL)
 					{
-						tempVec3.SetX(atoi(tempBuffer));						
+						tempVec3.SetX(atoi(tempBuffer));	
+						count = 0;
 					}
 					else if (tempVec3.GetX() != NULL && tempVec3.GetY() == NULL)
 					{
 						tempVec3.SetY(atoi(tempBuffer));
+						count = 0;
 					}					
 					continue;
 				}
 				else if (buffer[i] == '/' && buffer[i + 1] == '/')
 				{
-					is2D = true;
+					hasTexCoords = true;
 					tempVec3.SetX(atoi(tempBuffer));
+					count = 0;
 					continue;
 				}
 				else if (buffer[i] == ' ')
@@ -289,48 +299,37 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 					tempVec3.SetZ(atoi(tempBuffer));		
 					m_VertexDataFaces.push_back(tempVec3);		
 					tempVec3.SetNull();
+					count = 0;
 					continue;
 				}
-				else if (buffer[i] == '/0')
+				else if (buffer[i] == '\0')
 				{
 					m_Faces.push_back(m_VertexDataFaces);
+					break;
 				}
 			}
+			delete[] tempBuffer;
 		}
+		delete[] buffer;
 	}
 	// don't forget to close the file
 	file.close();
+	FillStruct();
 }
-//Getter function to get the faces of the obj file
-std::vector<std::vector<SEngine::Vector3>> SEngine::ObjLoader::GetFaces()
+void SEngine::ObjLoader::FillStruct()
 {
-	return m_Faces;
+
 }
-//Getter function to get the vertices of the file
-std::vector<SEngine::Vector4> SEngine::ObjLoader::GetVertices()
+SEngine::OBJECT SEngine::ObjLoader::GetObjectData()
 {
-	return m_Vec4Vertices;
+	return OBJECT{};
 }
-//Getter function to get the normals of the file
-std::vector<SEngine::Vector3> SEngine::ObjLoader::GetNormals()
-{
-	return m_Normals;
-}
-//Getter function to get the Textcoords of the file
-std::vector<SEngine::Vector2> SEngine::ObjLoader::GetTexCoords()
-{
-	return m_TexCoords;
-}
+
 //default destructor
 SEngine::ObjLoader::~ObjLoader()
 {
-	m_VertexDataFaces.clear();
-	m_Faces.clear(); 
-	m_Vec4Vertices.clear(); 
-	m_Normals.clear(); 
-	m_TexCoords.clear();
-	delete m_GroupName; 
-	delete m_ObjName; 
-	delete m_MtlLib; 
-	delete m_UsedMtl; 
+	delete[] m_GroupName; 
+	delete[] m_ObjName; 
+	delete[] m_MtlLib; 
+	delete[] m_UsedMtl; 
 }

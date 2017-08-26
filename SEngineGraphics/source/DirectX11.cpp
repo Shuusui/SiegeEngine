@@ -184,30 +184,20 @@ void SEngineGraphics::DirectX11::InitGraphics()
 		return;
 	}
 	m_Loader = CreateLoader();
-	m_Loader->LoadFile("..\\Models\\Fountain.obj");
-	std::vector<SEngine::Vector4> tempVert = m_Loader->GetVertices();
-	std::vector<SEngine::Vector3> tempVertPos;
-	std::vector<float> w;
-	uint32 tempVertSize = tempVert.size();
-	for (uint32 i = 0; i < tempVertSize; i++)
+	m_Loader->LoadFile("..\\Models\\1.obj");
+	
+	VERTEX Vertices[3] = 
 	{
-		tempVertPos.push_back(SEngine::Vector3(tempVert[i].GetX(), tempVert[i].GetY(), tempVert[i].GetZ()));
-		w.push_back(tempVert[i].GetW());
-	}
-	VERTEX* Vertices = nullptr; 
-	Vertices = new VERTEX[tempVertSize];
-	for (uint32 i = 0; i < tempVertSize; i++)
-	{
-		Vertices[i].x = tempVertPos[i].GetX();
-		Vertices[i].y = tempVertPos[i].GetY();
-		Vertices[i].z = tempVertPos[i].GetZ();
-		Vertices[i].Color = D3DXCOLOR(0, 0, 0, 1);
-	}	
+		1,1,1,D3DXCOLOR{1,0,0,1},
+		2,2,2,D3DXCOLOR{0,1,0,1},
+		3,3,3,D3DXCOLOR{0,0,1,1}
+	};
+
 	//Create HRESULT to check some functions
 	HRESULT hr;
 	//Create the Vertex Buffer
 	D3D11_BUFFER_DESC DX11BufferDesc{};
-	DX11BufferDesc.ByteWidth = sizeof(VERTEX) * tempVertSize;  //the size is the VERTEX * 3 as seen in Triangle[]
+	DX11BufferDesc.ByteWidth = sizeof(VERTEX) * sizeof(Vertices);  //the size is the VERTEX * 3 as seen in Triangle[]
 	DX11BufferDesc.Usage = D3D11_USAGE_DYNAMIC; //write access by CPU and GPU
 	DX11BufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE; //Allow the CPU to write in the buffer
 	DX11BufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER; // use the buffer as a Vertex Buffer

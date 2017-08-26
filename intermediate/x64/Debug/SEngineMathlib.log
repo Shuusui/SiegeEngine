@@ -1,0 +1,20 @@
+﻿  Vector4.cpp
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\vector4.hpp(117): warning C4244: "=": Konvertierung von "const int32" in "float", möglicher Datenverlust
+d:\siegeengine-master\siegeengine\senginemathlib\source\vector4.cpp(74): warning C4244: "=": Konvertierung von "int32" in "float", möglicher Datenverlust
+  Vector3.cpp
+  Vector2.cpp
+  Matrix.cpp
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\vector4.hpp(117): warning C4244: "=": Konvertierung von "const int32" in "float", möglicher Datenverlust
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\matrix.hpp(30): warning C4102: "SEngine": Unreferenzierte Bezeichnung
+  Color.cpp
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\color.hpp(59): warning C4244: "Initialisierung": Konvertierung von "uint32" in "float", möglicher Datenverlust
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\color.hpp(64): warning C4244: "Initialisierung": Konvertierung von "int" in "float", möglicher Datenverlust
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\color.hpp(69): warning C4244: "Initialisierung": Konvertierung von "int" in "float", möglicher Datenverlust
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\color.hpp(74): warning C4244: "Initialisierung": Konvertierung von "int" in "float", möglicher Datenverlust
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\color.hpp(79): warning C4244: "Initialisierung": Konvertierung von "int" in "float", möglicher Datenverlust
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\color.cpp(33): warning C4244: "=": Konvertierung von "float" in "uint8", möglicher Datenverlust
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\color.cpp(34): warning C4244: "=": Konvertierung von "float" in "uint8", möglicher Datenverlust
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\color.cpp(35): warning C4244: "=": Konvertierung von "float" in "uint8", möglicher Datenverlust
+d:\siegeengine-master\siegeengine\senginemathlib\source\include\color.cpp(36): warning C4244: "=": Konvertierung von "float" in "uint8", möglicher Datenverlust
+  Code wird generiert...
+  SEngineMathlib.vcxproj -> D:\SiegeEngine-master\SiegeEngine\SiegeEngine\bin\mathlib\x64\Debug\SEngineMathlib.lib
