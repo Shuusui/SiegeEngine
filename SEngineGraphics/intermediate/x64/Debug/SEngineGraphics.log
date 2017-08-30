@@ -1,5 +1,8 @@
 ﻿  DirectX11.cpp
 d:\siegeengine-master\siegeengine\senginemathlib\source\include\vector4.hpp(117): warning C4244: "=": Konvertierung von "const int32" in "float", möglicher Datenverlust
 d:\siegeengine-master\siegeengine\senginegraphics\source\directx11.cpp(221): warning C4154: Löschen eines Arrayausdrucks; Konvertierung in Zeiger
+  Code wird generiert...
+  Überspringen... (keine relevanten Änderungen gefunden)
+  GraphicsHandler.cpp
   SEngineGraphics.vcxproj -> D:\SiegeEngine-master\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineGraphics.dll
   SEngineGraphics.vcxproj -> D:\SiegeEngine-master\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineGraphics.pdb (Partial PDB)

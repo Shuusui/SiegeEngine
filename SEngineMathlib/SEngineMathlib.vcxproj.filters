@@ -1,75 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Quelldateien">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="HeaderFiles">
+      <UniqueIdentifier>{d6c1c4ab-3652-4737-bd3a-2244bf15e2a5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Headerdateien">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    <Filter Include="HeaderFilesWithDeclarations">
+      <UniqueIdentifier>{2e4da52b-4400-4e2f-96b3-8ce3f5639e1e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Ressourcendateien">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="HeaderFilesWithCode">
-      <UniqueIdentifier>{f0f77b99-d93a-420b-b541-48c92583a942}</UniqueIdentifier>
+    <Filter Include="SourceFiles">
+      <UniqueIdentifier>{c8f980d3-bc9d-4a4a-b74b-1cdcc57b4ea1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="source\include\Matrix.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="source\include\Vector3.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="source\include\Vector4.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="source\include\Matrix.hpp">
-      <Filter>HeaderFilesWithCode</Filter>
-    </ClInclude>
-    <ClInclude Include="source\include\Vector3.hpp">
-      <Filter>HeaderFilesWithCode</Filter>
-    </ClInclude>
-    <ClInclude Include="source\include\Vector4.hpp">
-      <Filter>HeaderFilesWithCode</Filter>
-    </ClInclude>
-    <ClInclude Include="source\include\MakroDefines.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="source\include\Vector2.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="source\include\Vector2.hpp">
-      <Filter>HeaderFilesWithCode</Filter>
+    <ClInclude Include="source\include\BasicMath.h">
+      <Filter>HeaderFiles</Filter>
     </ClInclude>
     <ClInclude Include="source\include\Color.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Matrix.h">
+      <Filter>HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Vector2.h">
+      <Filter>HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Vector3.h">
+      <Filter>HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Vector4.h">
+      <Filter>HeaderFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\BasicMath.hpp">
+      <Filter>HeaderFilesWithDeclarations</Filter>
     </ClInclude>
     <ClInclude Include="source\include\Color.hpp">
-      <Filter>HeaderFilesWithCode</Filter>
+      <Filter>HeaderFilesWithDeclarations</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Matrix.hpp">
+      <Filter>HeaderFilesWithDeclarations</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Vector2.hpp">
+      <Filter>HeaderFilesWithDeclarations</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Vector3.hpp">
+      <Filter>HeaderFilesWithDeclarations</Filter>
+    </ClInclude>
+    <ClInclude Include="source\include\Vector4.hpp">
+      <Filter>HeaderFilesWithDeclarations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Matrix.cpp">
-      <Filter>Quelldateien</Filter>
+      <Filter>SourceFiles</Filter>
     </ClCompile>
     <ClCompile Include="source\Vector2.cpp">
-      <Filter>Quelldateien</Filter>
+      <Filter>SourceFiles</Filter>
     </ClCompile>
     <ClCompile Include="source\Vector3.cpp">
-      <Filter>Quelldateien</Filter>
+      <Filter>SourceFiles</Filter>
     </ClCompile>
     <ClCompile Include="source\Vector4.cpp">
-      <Filter>Quelldateien</Filter>
+      <Filter>SourceFiles</Filter>
     </ClCompile>
-    <ClCompile Include="source\include\Color.cpp">
-      <Filter>Quelldateien</Filter>
+    <ClCompile Include="source\Color.cpp">
+      <Filter>SourceFiles</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

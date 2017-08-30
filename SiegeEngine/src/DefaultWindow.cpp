@@ -74,7 +74,7 @@ void SEngine::DefaultWindow::Init()
 //Run function of the DefaultWindow Class
 WPARAM SEngine::DefaultWindow::Run()
 {
-	uint8 chosenGraphicsAPI = 0;
+	uint8 chosenGraphicsAPI = 1;
 	HMODULE graphicsModule = LoadLibrary(L"module\\SEngineGraphics.dll");
 	CREATE_GRAPHICS createGraphics = nullptr; 
 	createGraphics = (CREATE_GRAPHICS)GetProcAddress(graphicsModule, "CreateGraphics");
