@@ -1,2 +1,1 @@
-﻿  SiegeEngine.vcxproj -> D:\SiegeEngine-master\SiegeEngine\\SiegeEngine\bin\x64\SiegeEngine_d.exe
-  SiegeEngine.vcxproj -> D:\SiegeEngine-master\SiegeEngine\\SiegeEngine\bin\x64\SiegeEngine_d.pdb (Partial PDB)
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Platforms\x64\PlatformToolsets\v141\Toolset.targets(36,5): error MSB8036: Die Windows SDK-Version 10.0.14393.0 wurde nicht gefunden. Installieren Sie die erforderliche Version des Windows SDK, oder ändern Sie die SDK-Version auf den Eigenschaftenseiten des Projekts. Sie können auch mit der rechten Maustaste auf die Projektmappe klicken und dann "Projektmappe neu zuweisen" auswählen.

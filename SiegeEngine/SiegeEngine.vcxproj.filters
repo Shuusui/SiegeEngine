@@ -48,6 +48,9 @@
     <ClCompile Include="src\Camera.cpp">
       <Filter>Quelldateien\Instances</Filter>
     </ClCompile>
+    <ClCompile Include="src\Project.cpp">
+      <Filter>Quelldateien\Instances</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\include\DefaultWindow.h">
@@ -69,6 +72,15 @@
       <Filter>Headerdateien\Instances</Filter>
     </ClInclude>
     <ClInclude Include="src\include\Camera.h">
+      <Filter>Headerdateien\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\ObjectManager.h">
+      <Filter>Headerdateien\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\EngineStructContainer.h">
+      <Filter>Headerdateien\InternalFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\Project.h">
       <Filter>Headerdateien\Instances</Filter>
     </ClInclude>
   </ItemGroup>

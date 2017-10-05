@@ -101,6 +101,7 @@
     <ClInclude Include="source\include\IScript.h" />
     <ClInclude Include="source\include\ITransform.h" />
     <ClInclude Include="source\include\IWindow.h" />
+    <ClInclude Include="source\include\StructContainer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Test.cpp" />

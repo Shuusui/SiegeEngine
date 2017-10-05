@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SiegeEngine", "SiegeEngine\SiegeEngine.vcxproj", "{97982628-3B7D-43B9-967F-C669A1013AFB}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -27,6 +27,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEngineLib", "SEngineLib\SEngineLib.vcxproj", "{644BE3AA-DE61-47EC-9302-57DE29401E13}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEngineMathlib", "SEngineMathlib\SEngineMathlib.vcxproj", "{5C48A861-F589-4847-8976-8E9E275F3AB8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SEnginePhysicsLib", "SEnginePhysicsLib\SEnginePhysicsLib.vcxproj", "{35F6150D-7654-4AF3-B88F-D6880A1FBA7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +68,14 @@ Global
 		{5C48A861-F589-4847-8976-8E9E275F3AB8}.Release|x64.ActiveCfg = Release|x64
 		{5C48A861-F589-4847-8976-8E9E275F3AB8}.Release|x64.Build.0 = Release|x64
 		{5C48A861-F589-4847-8976-8E9E275F3AB8}.Release|x86.ActiveCfg = Release|x64
+		{35F6150D-7654-4AF3-B88F-D6880A1FBA7B}.Debug|x64.ActiveCfg = Debug|x64
+		{35F6150D-7654-4AF3-B88F-D6880A1FBA7B}.Debug|x64.Build.0 = Debug|x64
+		{35F6150D-7654-4AF3-B88F-D6880A1FBA7B}.Debug|x86.ActiveCfg = Debug|Win32
+		{35F6150D-7654-4AF3-B88F-D6880A1FBA7B}.Debug|x86.Build.0 = Debug|Win32
+		{35F6150D-7654-4AF3-B88F-D6880A1FBA7B}.Release|x64.ActiveCfg = Release|x64
+		{35F6150D-7654-4AF3-B88F-D6880A1FBA7B}.Release|x64.Build.0 = Release|x64
+		{35F6150D-7654-4AF3-B88F-D6880A1FBA7B}.Release|x86.ActiveCfg = Release|Win32
+		{35F6150D-7654-4AF3-B88F-D6880A1FBA7B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

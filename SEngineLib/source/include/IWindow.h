@@ -34,6 +34,6 @@ namespace SEngine
 		///
 		///virtual Destructor
 		///
-		//virtual ~IWindow() = 0; 
+		~IWindow(); 
 	};
 }

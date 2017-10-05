@@ -20,10 +20,10 @@ cbuffer cbPerObject : register( b0 )
 //--------------------------------------------------------------------------------------
 struct VS_INPUT
 {
-    	float3 vPosition    : POSITION;
+    float4 vPosition    : POSITION;
 	float4 vColor : COLOR; 
-    	float3 vNormal        : NORMAL;
-    	float2 vTexcoord    : TEXCOORD0;
+    float3 vNormal        : NORMAL;
+    float2 vTexcoord    : TEXCOORD0;
 
 };
 
@@ -43,7 +43,8 @@ VS_OUTPUT VSMain( VS_INPUT Input )
 {
     VS_OUTPUT Output;
     
-	Output.vPosition = float4(Input.vPosition,1);
+	//Output.vPosition = mul(mul(Input.vPosition, g_mWorld), g_mWorldViewProjection);
+	Output.vPosition = Input.vPosition;
 	Output.vNormal = Input.vNormal;
     Output.vTexcoord = Input.vTexcoord;
 	Output.vColor = Input.vColor;

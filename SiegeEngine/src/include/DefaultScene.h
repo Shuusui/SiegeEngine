@@ -8,6 +8,7 @@
 ///external includes
 #pragma region External includes
 #include <vector>
+#include <string>
 #pragma endregion
 
 ///
@@ -24,11 +25,15 @@ namespace SEngine
 		///
 		///Default Constructor
 		///
-		DefaultScene(); 
+		DefaultScene(std::string name, uint32 index)
+			:IScene(name, index)
+		{
+
+		}
 		///
 		///Initialize the default Scene
 		///
-		void Init(uint32 index) override;
+		void Init() override;
 		///
 		///Run the default Scene
 		///
@@ -50,21 +55,16 @@ namespace SEngine
 		///
 		IGameObject* FindGameObjectInScene(IGameObject* gameObject) override; 
 		///
-		///Get the Scene Index, set in the Init function
-		///
-		uint32 GetSceneIndex() override; 
-		///
 		///Shut Down the scene
 		///
 		void ShutDown();
 		///
 		///Default Destructor
 		///
-		//~DefaultScene(); 
+		~DefaultScene(); 
 	private: 
 		///Member variables
 #pragma region Member variables
-		uint32 m_Index; 
 		uint32 m_GameObjectIndex; 
 		uint32 m_RemovedGameObjectIndex;
 		std::vector<IGameObject*> m_GameObjects;

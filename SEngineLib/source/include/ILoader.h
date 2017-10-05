@@ -1,8 +1,11 @@
 #pragma once
 ///internal includes
 #include "Vector4.h"
+#include "StructContainer.h"
 ///external includes
 #include <vector>
+#include <list>
+#include <string>
 
 ///
 ///
@@ -11,12 +14,7 @@
 ///
 namespace SEngine
 {
-	///Create a struct to get all informations in one 
-	struct OBJECT
-	{
-		char ObjectName[256]{ 0 };
-		std::vector<std::vector<Vector3>> VertexData;
-	};
+	
 	class ILoader
 	{
 	public: 
@@ -28,7 +26,6 @@ namespace SEngine
 		///pure virtual function to get the Object from the file 
 		///
 		virtual OBJECT GetObjectData() = 0; 
-
 
 
 		/*///

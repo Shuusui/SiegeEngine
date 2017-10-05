@@ -60,6 +60,9 @@
     <ClInclude Include="source\include\ITransform.h">
       <Filter>Headerdateien\Inherited Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="source\include\StructContainer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Test.cpp">

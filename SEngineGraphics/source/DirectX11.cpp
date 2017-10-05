@@ -154,7 +154,7 @@ void SEngineGraphics::DirectX11::InitPipeline()
 	//create an array of strucs for the input layout 
 	D3D11_INPUT_ELEMENT_DESC inputElementDesc[] =
 	{
-		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0},
+		{ "POSITION", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0},
 		{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0},
 		{ "NORMAL", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0},
 		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA,0},
@@ -184,20 +184,36 @@ void SEngineGraphics::DirectX11::InitGraphics()
 		return;
 	}
 	m_Loader = CreateLoader();
-	m_Loader->LoadFile("..\\Models\\1.obj");
-	
-	VERTEX Vertices[3] = 
-	{
-		1,1,1,D3DXCOLOR{1,0,0,1},
-		2,2,2,D3DXCOLOR{0,1,0,1},
-		3,3,3,D3DXCOLOR{0,0,1,1}
-	};
+	m_Loader->LoadFile("..\\Models\\Cube.obj");
 
+	SEngine::OBJECT obj = m_Loader->GetObjectData();
+	uint32 objSize = 0; 
+	for (int i = 0; i < obj.ObjGroups.size(); i++)
+	{
+		objSize += obj.ObjGroups[i].VertexDatas.size();
+	}
+
+	DX11VERTEX* NotATri = new DX11VERTEX[objSize]; 
+	for (int i = 0; i < obj.ObjGroups.size(); i++)
+	{
+		for (int j = 0; j < obj.ObjGroups[i].VertexDatas.size(); j++)
+		{
+			for (int k = 0; k < obj.ObjGroups[i].VertexDatas[j].size(); k++)
+			{
+				NotATri[i + j].x = obj.ObjGroups[i].VertexDatas[j][k].Vertex.GetX();
+				NotATri[i + j].y = obj.ObjGroups[i].VertexDatas[j][k].Vertex.GetY();
+				NotATri[i + j].z = obj.ObjGroups[i].VertexDatas[j][k].Vertex.GetZ();
+				//NotATri[i + j].w = obj.ObjGroups[i].VertexDatas[j][k].Vertex.GetW();
+				NotATri[i + j].w = 1; 
+				NotATri[i + j].Color = D3DXCOLOR{ 1,0,0,1 };
+			}
+		}
+	}
 	//Create HRESULT to check some functions
 	HRESULT hr;
 	//Create the Vertex Buffer
 	D3D11_BUFFER_DESC DX11BufferDesc{};
-	DX11BufferDesc.ByteWidth = sizeof(VERTEX) * sizeof(Vertices);  //the size is the VERTEX * 3 as seen in Triangle[]
+	DX11BufferDesc.ByteWidth = sizeof(DX11VERTEX) * objSize;  //the size is the VERTEX * 3 as seen in Triangle[]
 	DX11BufferDesc.Usage = D3D11_USAGE_DYNAMIC; //write access by CPU and GPU
 	DX11BufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE; //Allow the CPU to write in the buffer
 	DX11BufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER; // use the buffer as a Vertex Buffer
@@ -216,9 +232,11 @@ void SEngineGraphics::DirectX11::InitGraphics()
 		OutputDebugStringW(L"Failed to Map the vertex buffer");
 		return;
 	}
-	memcpy(mapSubRes.pData, Vertices, sizeof(Vertices));
+
+	memcpy(mapSubRes.pData, NotATri, objSize*16);
+	/*memcpy(mapSubRes.pData, Vertices, sizeof(Vertices));*/
 	m_DevCon->Unmap(m_VertexBuffer, NULL);
-	delete[] Vertices; 
+	delete[] NotATri;
 }
 	
 //run dx11
@@ -229,7 +247,7 @@ void SEngineGraphics::DirectX11::Run()
 	//clear the backbuffer
 	m_DevCon->ClearRenderTargetView(m_BackBuffer, D3DXCOLOR(0.0f, 0.2f, 0.4f, 1.0f));
 	//Select which vertex buffer to display
-	UINT stride = sizeof(VERTEX); 
+	UINT stride = sizeof(DX11VERTEX); 
 	UINT offset = 0; 
 	m_DevCon->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset); 
 	//Select which primitive type we are using 
@@ -263,5 +281,13 @@ void SEngineGraphics::DirectX11::ShutDown()
 //Destructor for the DX11 class
 SEngineGraphics::DirectX11::~DirectX11()
 {
-
+	//Release everything in destructor too, if there was an error before or forgot shutdown. //SafeRelease checks if it's already deleted
+	SafeRelease(m_BackBuffer);
+	SafeRelease(m_SwapChain);
+	SafeRelease(m_Dev);
+	SafeRelease(m_DevCon);
+	SafeRelease(m_VertexShader);
+	SafeRelease(m_PixelShader);
+	SafeRelease(m_VertexBuffer);
+	SafeRelease(m_InputLayout);
 }

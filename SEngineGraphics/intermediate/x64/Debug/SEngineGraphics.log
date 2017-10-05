@@ -1,8 +1,1 @@
-﻿  DirectX11.cpp
-d:\siegeengine-master\siegeengine\senginemathlib\source\include\vector4.hpp(117): warning C4244: "=": Konvertierung von "const int32" in "float", möglicher Datenverlust
-d:\siegeengine-master\siegeengine\senginegraphics\source\directx11.cpp(221): warning C4154: Löschen eines Arrayausdrucks; Konvertierung in Zeiger
-  Code wird generiert...
-  Überspringen... (keine relevanten Änderungen gefunden)
-  GraphicsHandler.cpp
-  SEngineGraphics.vcxproj -> D:\SiegeEngine-master\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineGraphics.dll
-  SEngineGraphics.vcxproj -> D:\SiegeEngine-master\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineGraphics.pdb (Partial PDB)
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Platforms\x64\PlatformToolsets\v141\Toolset.targets(36,5): error MSB8036: Die Windows SDK-Version 10.0.14393.0 wurde nicht gefunden. Installieren Sie die erforderliche Version des Windows SDK, oder ändern Sie die SDK-Version auf den Eigenschaftenseiten des Projekts. Sie können auch mit der rechten Maustaste auf die Projektmappe klicken und dann "Projektmappe neu zuweisen" auswählen.

@@ -1,2 +1,5 @@
-﻿  SEngineGraphics.vcxproj -> D:\SiegeEngine-master\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineGraphics.dll
-  SEngineGraphics.vcxproj -> D:\SiegeEngine-master\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineGraphics.pdb (Partial PDB)
+﻿  DirectX11.cpp
+d:\dokumente\repos\siegeengine\senginemathlib\source\include\vector4.hpp(117): warning C4244: "=": Konvertierung von "const int32" in "float", möglicher Datenverlust
+d:\dokumente\repos\siegeengine\senginegraphics\source\directx11.cpp(193): warning C4267: "+=": Konvertierung von "size_t" nach "uint32", Datenverlust möglich
+  SEngineGraphics.vcxproj -> D:\Dokumente\Repos\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineGraphics.dll
+  SEngineGraphics.vcxproj -> D:\Dokumente\Repos\SiegeEngine\\SiegeEngine\bin\x64\module\SEngineGraphics.pdb (Partial PDB)

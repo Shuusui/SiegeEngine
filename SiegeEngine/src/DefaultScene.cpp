@@ -1,18 +1,9 @@
-#pragma once
-
 #include "include\DefaultScene.h"
 
-//Default Constructor
-SEngine::DefaultScene::DefaultScene()
-	:m_Index(0)
-	,m_RemovedGameObjectIndex(0)
-{
 
-}
 //Initialize the default Scene and set the index of the scene
-void SEngine::DefaultScene::Init(uint32 index)
+void SEngine::DefaultScene::Init()
 {
-	m_Index = index; 
 }
 //Run the DefaultScene 
 void SEngine::DefaultScene::Run()
@@ -23,13 +14,12 @@ void SEngine::DefaultScene::Run()
 void SEngine::DefaultScene::ChangeScene(IScene* otherScene)
 {
 	ShutDown(); 
-	otherScene->Init(otherScene->GetSceneIndex());
 }
 //Add a Gameobject to the scene
 void SEngine::DefaultScene::AddGameObjectToScene(IGameObject* gameObject)
 {	
 	m_GameObjects.push_back(gameObject);
-	gameObject->Instantiate(m_GameObjectIndex);
+	gameObject->Instantiate();
 	m_GameObjectIndex++;
 }
 //Remove a Gameobject from the scene
@@ -49,20 +39,24 @@ SEngine::IGameObject* SEngine::DefaultScene::FindGameObjectInScene(IGameObject* 
 {
 	for (uint32 i = 0; i < m_GameObjects.size(); i++)
 	{
-		if (m_GameObjects[i]->GetIndex() == gameObject->GetIndex())
+		if (std::binary_search(m_GameObjects.begin(), m_GameObjects.end(), gameObject))
 		{
 			return gameObject;
+		}
+		else
+		{
+			printf("Game Object \s not found", gameObject->GetName().c_str());
 		}
 	}
 	return nullptr;
 }
-//Get the index of the scene
-uint32 SEngine::DefaultScene::GetSceneIndex()
-{
-	return m_Index;
-}
 //Shut down the default scene
 void SEngine::DefaultScene::ShutDown()
+{
+
+}
+//The default destructor of the DefaultScene
+SEngine::DefaultScene::~DefaultScene()
 {
 
 }

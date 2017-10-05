@@ -17,13 +17,14 @@
 namespace SEngine
 {
 
-	class Camera :public EmptyGameObject
+	class Camera :public EmptyGameObject , public IGameObject
 	{
 	public:
 		/// 
-		///Constructor
+		///Constructors
 		///
-		Camera(Vector3 worldPos, Vector4 worldRot, Vector3 worldScale);
+		Camera(uint32 index);
+		Camera(uint32 index, Vector3 worldPos, Vector4 worldRot, Vector3 worldScale);
 		/// 
 		///Destructor
 		///
@@ -39,7 +40,6 @@ namespace SEngine
 		Vector4 m_WorldRot; 
 		Vector4 m_WorldScale;
 		std::vector<IComponent*> m_Components; 
-		const char* m_Name;
 #pragma endregion
 		};
 }

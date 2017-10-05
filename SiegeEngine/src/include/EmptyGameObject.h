@@ -29,12 +29,12 @@ namespace SEngine
 		///
 		///Constructors
 		///
-		EmptyGameObject();
-		EmptyGameObject(Vector3 worldPos, Vector4 worldRot, Vector3 worldScale);
+		EmptyGameObject(uint32 index);
+		EmptyGameObject(uint32 index, Vector3 worldPos, Vector4 worldRot, Vector3 worldScale);
 		///
 		///Instantiate the EmptyGameObject
 		///
-		void Instantiate(uint32 index) override;
+		void Instantiate() override;
 		///
 		///Update function 
 		///
@@ -69,7 +69,6 @@ namespace SEngine
 		///Member Variables
 		///
 #pragma region Member Variables
-		const char* m_Name;
 		std::vector<IComponent*> m_Components;
 		uint32 m_Index; 
 		uint32 m_ComponentIndex;

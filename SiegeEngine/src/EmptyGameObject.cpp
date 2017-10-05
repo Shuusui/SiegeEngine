@@ -1,33 +1,33 @@
 #include "include\EmptyGameObject.h"
 
 //Default Constructor
-SEngine::EmptyGameObject::EmptyGameObject()
-	:m_Index(0)
+SEngine::EmptyGameObject::EmptyGameObject(uint32 index)
+	:m_Index(index)
 	,m_ComponentIndex(0)
 	,m_RemovedComponentIndex(0)
 	,m_WorldPos(0,0,0,0)
 	,m_WorldRot(0,0,0,0)
 	,m_WorldScale(0,0,0,0)
-	,m_Name(nullptr)
+	,IGameObject("EmptyGameObject "+ index)
 {
-	
+
 }
 //Constructor which sets the worldPos, worldRot, worldScale
-SEngine::EmptyGameObject::EmptyGameObject(Vector3 worldPos, Vector4 worldRot, Vector3 worldScale)
-	:m_Index(0)
+SEngine::EmptyGameObject::EmptyGameObject(uint32 index, Vector3 worldPos, Vector4 worldRot, Vector3 worldScale)
+	:m_Index(index)
 	,m_ComponentIndex(0)
 	,m_RemovedComponentIndex(0)
-	,m_WorldPos(worldPos.GetX(), worldPos.GetY(), worldPos.GetZ(),1.0f)
-	,m_WorldRot(worldRot.GetX(), worldRot.GetY(),worldRot.GetZ(), worldRot.GetW())
-	, m_WorldScale(worldScale.GetX(), worldScale.GetY(), worldScale.GetZ(), 1.0f)
+	,m_WorldPos(worldPos,1.0f)
+	,m_WorldRot(worldRot)
+	,m_WorldScale(worldScale, 1.0f)
+	, IGameObject("EmptyGameObject "+ index)
 {
 }
 //function to instantiate the empty gameobject
-void SEngine::EmptyGameObject::Instantiate(uint32 index)
+void SEngine::EmptyGameObject::Instantiate()
 {
-	m_Index = index;
-	m_Name = "EmptyGameObject" + m_Index;
 	IComponent* component = new TransformComponent(m_WorldPos, m_WorldRot, m_WorldScale);
+	m_Components.push_back(component);
 }
 //function to update the empty gameobecjt
 void SEngine::EmptyGameObject::Update()
@@ -56,13 +56,6 @@ void SEngine::EmptyGameObject::RemoveComponent(IComponent* component)
 SEngine::IComponent* SEngine::EmptyGameObject::FindComponent(IComponent* component)
 {
 
-	/*for (uint32 i = 0; i < m_Components.size(); i++)
-	{
-		if (m_Components[i]->GetIndex() == component->GetIndex())
-		{
-			return m_Components[i];
-		}
-	}*/
 	if (std::binary_search(m_Components.begin(), m_Components.end(), component))
 	{
 		return component;

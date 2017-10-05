@@ -3,6 +3,10 @@
 #pragma region Internal includes
 #include "IComponent.h"
 #pragma endregion
+///External includes
+#pragma region External includes
+#include <string>
+#pragma endregion 
 
 ///
 ///
@@ -15,13 +19,21 @@ namespace SEngine
 	{
 	public:
 		///
+		///Default Constructor
+		///
+		IGameObject(std::string name)
+			: m_Name(name)
+		{
+
+		}
+		///
 		///pure virutal function for update 
 		///
 		virtual void Update() = 0; 
 		/// 
 		///pure virtual function to instantiate the GameObject
 		/// 
-		virtual void Instantiate(uint32 index)= 0; 
+		virtual void Instantiate()= 0; 
 		/// 
 		///pure virtual function to destroy the GameObject 
 		///
@@ -43,8 +55,15 @@ namespace SEngine
 		///
 		virtual uint32 GetIndex() = 0; 
 		///
+		///function to get the name of the gameObject
+		///
+		std::string GetName() { return m_Name; };
+		///
 		///virtual Destructor
 		///
-		//virtual ~IGameObject() = 0; 
+		~IGameObject() {};
+
+	private: 
+		std::string m_Name;
 	};
 }

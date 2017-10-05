@@ -7,6 +7,7 @@
 #include "Vector3.h"
 #include "Vector4.h"
 #include "Vector2.h"
+#include "StructContainer.h"
 #pragma endregion
 ///external includes
 #pragma region External includes
@@ -27,10 +28,10 @@
 namespace SEngineGraphics
 {
 
-	//create a struct for a single Vertex
-	struct VERTEX
+	///creates a struct for a single Vertex in DX11
+	struct DX11VERTEX
 	{
-		float x = 0, y = 0, z = 0;
+		float x = 0, y = 0, z = 0, w = 0;
 		D3DXCOLOR Color{ 0,0,0,0 };
 	};
 	class DirectX11 /*: public SEngine::IGraphics*/
@@ -82,7 +83,6 @@ namespace SEngineGraphics
 		ID3D11Buffer* m_VertexBuffer; 
 		ID3D11InputLayout* m_InputLayout;
 		SEngine::ILoader* m_Loader;
-		VERTEX* m_Vertices; 
 #pragma endregion
 	};
 }

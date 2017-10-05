@@ -2,8 +2,10 @@
 //default constructor
 SEngine::ObjLoader::ObjLoader()
 	:m_SmoothGroups(0)
-	, m_ResultObject(nullptr)
 {
+	m_ObjName = new char[256];
+	m_GroupName = new char[256];
+	m_UsedMtl = new char[256];
 }
 //Create the dll
 SEngine::ILoader* SEngine::ObjLoader::CreateLoader()
@@ -29,6 +31,8 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 	file.seekg(0, file.end);
 	uint32 length = file.tellg();
 	file.seekg(0, file.beg);
+	uint32 lineCount = 0; 
+	uint32 lineCountCheck = 0;
 	//read out the objfile
 	while (!file.eof())
 	{
@@ -42,14 +46,16 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 		///read out the Materiabl lib of the objfile
 		else if (buffer[0] == 'm')
 		{
+			char* mtlLib = new char[256];
 			for (uint8 i = 0; i < 256 - 1; i++)
 			{
 				if (buffer[i] != '\0')
 				{
-					m_MtlLib[i] = buffer[i + 7];
+					mtlLib[i] = buffer[i + 7];
 				}
 				else
 				{
+					m_MtlLibs.push_back(mtlLib);
 					break;
 				}
 			}
@@ -77,7 +83,7 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 			uint8 counter = 0;
 			Vector4 tempVec4(0, 0, 0, 0);
 			float x = 0, y = 0, z = 0, w = 1;
-			for (uint8 i = 2; i < sizeof(buffer) - 2; i++)
+			for (uint8 i = 2; i < 256 - 2; i++)
 			{
 				if (buffer[i] != ' ' && buffer[i] != '\0')
 				{
@@ -139,7 +145,7 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 			uint8 counter = 0;
 			Vector3 tempVec3(0, 0, 0);
 			float x = 0, y = 0, z = 0;
-			for (uint8 i = 3; i < sizeof(buffer) - 3; i++)
+			for (uint8 i = 3; i < 256 - 3; i++)
 			{
 				if (buffer[i] != ' ' && buffer[i] != '\0')
 				{
@@ -183,7 +189,7 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 			uint8 counter = 0;
 			Vector2 tempVec2(0, 0);
 			float x = 0, y = 0, z = 0;
-			for (uint8 i = 3; i < sizeof(buffer) - 3; i++)
+			for (uint8 i = 3; i < 256 - 3; i++)
 			{
 				if (buffer[i] != ' ' && buffer[i] != '\0')
 				{
@@ -211,7 +217,17 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 		}
 		///read out the groupname
 		else if (buffer[0] == 'g')
-		{
+		{		
+			if (lineCountCheck != NULL)
+			{
+				FormGroup(); 
+				m_Faces.clear();
+				lineCountCheck = lineCount;
+			}
+			else
+			{
+				lineCountCheck = lineCount;
+			}
 			for (uint8 i = 0; i < 256; i++)
 			{
 				if (buffer[i] != '\0')
@@ -258,6 +274,10 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 			}
 			delete[] tempBuffer;
 		}
+		else if (buffer[0] == 's' && buffer[2] == 'o')
+		{
+			m_SmoothGroups = 0;
+		}
 		///read the faces of the obj file
 		else if (buffer[0] == 'f')
 		{
@@ -265,6 +285,7 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 			bool hasTexCoords = false; 
 			char* tempBuffer = new char[15];
 			uint8 count = 0;
+			std::vector<Vector3> tempVertexData;
 			for (uint8 i = 2; i < 256; i++)
 			{
 				if (buffer[i] != '/' && buffer[i] != ' ' && buffer[i] != '\0')
@@ -278,11 +299,13 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 					if (tempVec3.GetX() == NULL)
 					{
 						tempVec3.SetX(atoi(tempBuffer));	
+						tempBuffer = new char[15];
 						count = 0;
 					}
 					else if (tempVec3.GetX() != NULL && tempVec3.GetY() == NULL)
 					{
 						tempVec3.SetY(atoi(tempBuffer));
+						tempBuffer = new char[15];
 						count = 0;
 					}					
 					continue;
@@ -291,38 +314,67 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 				{
 					hasTexCoords = true;
 					tempVec3.SetX(atoi(tempBuffer));
+					tempBuffer = new char[15];
 					count = 0;
 					continue;
 				}
 				else if (buffer[i] == ' ')
 				{
 					tempVec3.SetZ(atoi(tempBuffer));		
-					m_VertexDataFaces.push_back(tempVec3);		
+					tempVertexData.push_back(tempVec3);
 					tempVec3.SetNull();
+					tempBuffer = new char[15];
 					count = 0;
 					continue;
 				}
 				else if (buffer[i] == '\0')
 				{
-					m_Faces.push_back(m_VertexDataFaces);
+					m_Faces.push_back(tempVertexData);
 					break;
 				}
 			}
 			delete[] tempBuffer;
 		}
+		lineCount++;
 		delete[] buffer;
 	}
 	// don't forget to close the file
+	FormGroup();
+	FormObject();
 	file.close();
-	FillStruct();
+	
 }
-void SEngine::ObjLoader::FillStruct()
+void SEngine::ObjLoader::FormGroup()
 {
+	GROUP currGroup;
+	currGroup.Smooth = m_SmoothGroups; 
+	currGroup.GroupName = m_GroupName;
+	currGroup.UsedMtl = m_UsedMtl; 
+	for (int i = 0; i < m_Faces.size(); i++)
+	{
+		std::vector<VERTEX> Vertices; 
+		for (int j = 0; j < m_Faces[i].size(); j++)
+		{
+			VERTEX currVertex;
+			currVertex.Vertex = m_Vec4Vertices[m_Faces[i][j].GetX()-1];
+			currVertex.TexCoord = m_TexCoords[m_Faces[i][j].GetY()-1];
+			currVertex.Normal = m_Normals[m_Faces[i][j].GetZ()-1]; 
+			Vertices.push_back(currVertex); 
+		}
+		currGroup.VertexDatas.push_back(Vertices);
+	}
+	m_ObjGroups.push_back(currGroup);
+}
 
+void SEngine::ObjLoader::FormObject()
+{
+	m_ResultObject.MtlLibs = m_MtlLibs;
+	m_ResultObject.ObjectName = m_ObjName;
+	m_ResultObject.ObjGroups = m_ObjGroups;
 }
 SEngine::OBJECT SEngine::ObjLoader::GetObjectData()
 {
-	return OBJECT{};
+	return m_ResultObject;
 }
 
 //default destructor
@@ -330,6 +382,5 @@ SEngine::ObjLoader::~ObjLoader()
 {
 	delete[] m_GroupName; 
 	delete[] m_ObjName; 
-	delete[] m_MtlLib; 
 	delete[] m_UsedMtl; 
 }

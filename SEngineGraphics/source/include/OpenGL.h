@@ -13,7 +13,7 @@
 
 ///
 ///
-///OpenGL class which render the window 
+///OpenGL class which render the window. This Graphics API was only for a practical task, will not get completed further.
 ///
 ///
 
