@@ -1,1 +1,12 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Platforms\x64\PlatformToolsets\v141\Toolset.targets(36,5): error MSB8036: Die Windows SDK-Version 10.0.14393.0 wurde nicht gefunden. Installieren Sie die erforderliche Version des Windows SDK, oder ändern Sie die SDK-Version auf den Eigenschaftenseiten des Projekts. Sie können auch mit der rechten Maustaste auf die Projektmappe klicken und dann "Projektmappe neu zuweisen" auswählen.
+﻿  DefaultScene.cpp
+d:\repos\siegeengine\src\defaultscene.cpp(48): warning C4129: "s": nicht erkannte Folge von Escapesequenz
+d:\repos\siegeengine\src\defaultscene.cpp(48): warning C4474: "printf": zu viele Argumente für Formatzeichenfolge übergeben
+  d:\repos\siegeengine\src\defaultscene.cpp(48): note: Platzhalter und deren Parameter erwarten 0 variadic-Argumente, es wurden aber 1 variadic-Argumente bereitgestellt.
+  Code wird generiert...
+  Überspringen... (keine relevanten Änderungen gefunden)
+  main.cpp
+  Project.cpp
+  EngineManager.cpp
+  DefaultWindow.cpp
+  SiegeEngine.vcxproj -> D:\Repos\\SiegeEngine\bin\x64\SiegeEngine_d.exe
+  SiegeEngine.vcxproj -> D:\Repos\\SiegeEngine\bin\x64\SiegeEngine_d.pdb (Partial PDB)

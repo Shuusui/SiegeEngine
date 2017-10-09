@@ -12,7 +12,7 @@
 cbuffer cbPerObject : register( b0 )
 {
     matrix        g_mWorldViewProjection    : packoffset( c0 );
-    matrix        g_mWorld                : packoffset( c4 );
+    matrix        g_mWorld					: packoffset( c4 );
 };
 
 //--------------------------------------------------------------------------------------
@@ -39,12 +39,36 @@ struct VS_OUTPUT
 //--------------------------------------------------------------------------------------
 // Vertex Shader
 //--------------------------------------------------------------------------------------
-VS_OUTPUT VSMain( VS_INPUT Input )
+VS_OUTPUT VSMain(VS_INPUT Input)
 {
-    VS_OUTPUT Output;
-    
-	//Output.vPosition = mul(mul(Input.vPosition, g_mWorld), g_mWorldViewProjection);
-	Output.vPosition = Input.vPosition;
+	VS_OUTPUT Output;
+
+	float4x4 worldMatrix = {	1.0f, 0.0f, 0.0f, -4.0f,
+								0.0f, 1.0f, 0.0f,0.f,
+								0.0f, 0.0f, 1, 4.0f,
+								0.0f, 0.0f, 0.0f, 1.0f };
+
+	float4x4 rotationX = {		1.0f, 0,		 0,		 0,
+								0, cos(45), -sin(45), 0,
+								0, sin(45), cos(45), 0,
+								0,	0,			0,	1 };
+	float4x4 rotationY = {		cos(30), 0 , sin(30), 0 ,
+								0, 1, 0, 0,
+								-sin(30), 0, cos(30), 0,
+								0, 0, 0, 1 };
+
+	float4x4 rotationZ = {		cos(30), -sin(30), 0, 0,
+								sin(30), cos(30), 0, 0,
+								0,0,1, 0,
+								0,0,0,1 };
+
+	float4x4 identity = { 1, 0, 0 , 0,
+							0, 1, 0, 0,
+							0, 0, 1, 0,
+							0, 0, 0, 1 };
+
+	Output.vPosition = mul(Input.vPosition, mul(mul(worldMatrix, rotationZ), identity));
+	//Output.vPosition = Input.vPosition;
 	Output.vNormal = Input.vNormal;
     Output.vTexcoord = Input.vTexcoord;
 	Output.vColor = Input.vColor;

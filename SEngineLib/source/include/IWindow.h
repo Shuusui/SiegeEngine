@@ -32,7 +32,7 @@ namespace SEngine
 		///
 		virtual MSG ShutDown() = 0; 
 		///
-		///virtual Destructor
+		///default Destructor
 		///
 		~IWindow(); 
 	};

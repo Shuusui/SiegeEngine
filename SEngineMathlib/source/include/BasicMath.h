@@ -4,7 +4,7 @@
 
 ///External includes
 
-
+#define PI float 3.14159265359
 ///
 ///
 ///Some basic static Math functions 
@@ -15,6 +15,7 @@ namespace SEngineMathlib
 {
 	class BasicMath
 	{
+
 		///
 		///Static function for the squareRoot
 		///

@@ -44,7 +44,7 @@ namespace SEngine
 		///
 		///Destructor 
 		///
-		~DefaultWindow();
+		//~DefaultWindow();
 		///
 		///lil function to get the wndHandle for Graphics API
 		///

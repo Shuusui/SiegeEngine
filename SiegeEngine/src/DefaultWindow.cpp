@@ -118,7 +118,7 @@ __forceinline HWND SEngine::DefaultWindow::GetWindowHandle()
 	return m_HWnd;
 }
 //Default Destructor
-SEngine::DefaultWindow::~DefaultWindow()
-{
-	delete m_Graphics;
-}
+//SEngine::DefaultWindow::~DefaultWindow()
+//{
+//	delete m_Graphics;
+//}

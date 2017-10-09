@@ -16,13 +16,13 @@ SEngineGraphics::DirectX11::DirectX11()
 //Constructor to initialize DX11 with Window handle
 SEngineGraphics::DirectX11::DirectX11(HWND hWnd)
 	:m_SwapChain(nullptr)
-	,m_Dev(nullptr)
-	,m_DevCon(nullptr)
-	,m_Hwnd(hWnd)
-	,m_PixelShader(nullptr)
-	,m_VertexShader(nullptr)
-	,m_VertexBuffer(nullptr)
-	,m_InputLayout(nullptr)
+	, m_Dev(nullptr)
+	, m_DevCon(nullptr)
+	, m_Hwnd(hWnd)
+	, m_PixelShader(nullptr)
+	, m_VertexShader(nullptr)
+	, m_VertexBuffer(nullptr)
+	, m_InputLayout(nullptr)
 {
 }
 //Saferelease Template to Release the Pointer in DX11 safely
@@ -51,7 +51,7 @@ bool Failed(HRESULT aResult)
 //Set the window handle 
 void SEngineGraphics::DirectX11::SetWindowHandle(HWND hwnd)
 {
-	m_Hwnd = hwnd; 
+	m_Hwnd = hwnd;
 }
 //Initialize DirectX11
 void SEngineGraphics::DirectX11::Init(uint16 wndWidth, uint16 wndHeight)
@@ -121,12 +121,12 @@ void SEngineGraphics::DirectX11::InitPipeline()
 	//Load and compile the new Shaders
 	ID3D10Blob *VertexShader = nullptr, *PixelShader = nullptr, *errorBlob = nullptr;
 	hr = D3DCompileFromFile(L"TestV.Shader", nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "VSMain", "vs_4_0", 0, 0, &VertexShader, &errorBlob);
-	if (Failed(hr))	
+	if (Failed(hr))
 	{
 		OutputDebugStringA((char*)errorBlob->GetBufferPointer());
 		OutputDebugStringW(L"Failed to Compile VS From File");
 		SafeRelease(errorBlob);
-		return; 
+		return;
 	}
 	hr = D3DCompileFromFile(L"TestP.Shader", nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, "PSMain", "ps_4_0", 0, 0, &PixelShader, &errorBlob);
 	if (Failed(hr))
@@ -134,23 +134,23 @@ void SEngineGraphics::DirectX11::InitPipeline()
 		OutputDebugStringA((char*)errorBlob->GetBufferPointer());
 		OutputDebugStringW(L"Failed to Compile PS From File");
 		SafeRelease(errorBlob);
-		return; 
+		return;
 	}
-	hr = m_Dev->CreateVertexShader(VertexShader->GetBufferPointer(), VertexShader->GetBufferSize(), nullptr, &m_VertexShader); 
+	hr = m_Dev->CreateVertexShader(VertexShader->GetBufferPointer(), VertexShader->GetBufferSize(), nullptr, &m_VertexShader);
 	if (Failed(hr))
 	{
 		OutputDebugStringW(L"Failed to Create the Vertex Shader");
-		return; 
+		return;
 	}
 	hr = m_Dev->CreatePixelShader(PixelShader->GetBufferPointer(), PixelShader->GetBufferSize(), nullptr, &m_PixelShader);
 	if (Failed(hr))
 	{
 		OutputDebugStringW(L"Failed to Create the Pixel Shader");
-		return; 
+		return;
 	}
 	m_DevCon->VSSetShader(m_VertexShader, nullptr, 0);
 	m_DevCon->PSSetShader(m_PixelShader, nullptr, 0);
-	
+
 	//create an array of strucs for the input layout 
 	D3D11_INPUT_ELEMENT_DESC inputElementDesc[] =
 	{
@@ -167,7 +167,7 @@ void SEngineGraphics::DirectX11::InitPipeline()
 		return;
 	}
 	m_DevCon->IASetInputLayout(m_InputLayout);
-	SafeRelease(VertexShader); 
+	SafeRelease(VertexShader);
 	SafeRelease(PixelShader);
 	SafeRelease(errorBlob);
 }
@@ -184,16 +184,17 @@ void SEngineGraphics::DirectX11::InitGraphics()
 		return;
 	}
 	m_Loader = CreateLoader();
-	m_Loader->LoadFile("..\\Models\\Cube.obj");
+	m_Loader->LoadFile("..\\Models\\cube.obj");
 
 	SEngine::OBJECT obj = m_Loader->GetObjectData();
-	uint32 objSize = 0; 
+	uint32 objSize = 0;
 	for (int i = 0; i < obj.ObjGroups.size(); i++)
 	{
 		objSize += obj.ObjGroups[i].VertexDatas.size();
 	}
 
-	DX11VERTEX* NotATri = new DX11VERTEX[objSize]; 
+	DX11VERTEX* NotATri = new DX11VERTEX[objSize];
+
 	for (int i = 0; i < obj.ObjGroups.size(); i++)
 	{
 		for (int j = 0; j < obj.ObjGroups[i].VertexDatas.size(); j++)
@@ -204,21 +205,31 @@ void SEngineGraphics::DirectX11::InitGraphics()
 				NotATri[i + j].y = obj.ObjGroups[i].VertexDatas[j][k].Vertex.GetY();
 				NotATri[i + j].z = obj.ObjGroups[i].VertexDatas[j][k].Vertex.GetZ();
 				//NotATri[i + j].w = obj.ObjGroups[i].VertexDatas[j][k].Vertex.GetW();
-				NotATri[i + j].w = 1; 
+				NotATri[i + j].w = 1;
 				NotATri[i + j].Color = D3DXCOLOR{ 1,0,0,1 };
 			}
 		}
 	}
+
 	//Create HRESULT to check some functions
 	HRESULT hr;
+
+	//int x = sizeof(DX11VERTEX);
+	//int y = D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT;
+	//x*= objSize; 
+
 	//Create the Vertex Buffer
 	D3D11_BUFFER_DESC DX11BufferDesc{};
 	DX11BufferDesc.ByteWidth = sizeof(DX11VERTEX) * objSize;  //the size is the VERTEX * 3 as seen in Triangle[]
 	DX11BufferDesc.Usage = D3D11_USAGE_DYNAMIC; //write access by CPU and GPU
 	DX11BufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE; //Allow the CPU to write in the buffer
-	DX11BufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER; // use the buffer as a Vertex Buffer
+	DX11BufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER; // use the buffer as a Vertex Buffer
 
-	hr = m_Dev->CreateBuffer(&DX11BufferDesc, nullptr, &m_VertexBuffer); //Create Buffer
+	//Create Subresource data
+	D3D11_SUBRESOURCE_DATA subData{};
+	subData.pSysMem = &m_VertexBuffer;
+
+	hr = m_Dev->CreateBuffer(&DX11BufferDesc, /*&subData*/nullptr, &m_VertexBuffer); //Create Buffer
 	if (Failed(hr))
 	{
 		OutputDebugStringW(L"Failed to Create VertexBuffer");
@@ -233,25 +244,25 @@ void SEngineGraphics::DirectX11::InitGraphics()
 		return;
 	}
 
-	memcpy(mapSubRes.pData, NotATri, objSize*16);
+	memcpy(mapSubRes.pData, NotATri, objSize * 16);
 	/*memcpy(mapSubRes.pData, Vertices, sizeof(Vertices));*/
 	m_DevCon->Unmap(m_VertexBuffer, NULL);
 	delete[] NotATri;
 }
-	
+
 //run dx11
 void SEngineGraphics::DirectX11::Run()
 {
 	//Create HRESULT to check some functions
-	HRESULT hr; 
+	HRESULT hr;
 	//clear the backbuffer
 	m_DevCon->ClearRenderTargetView(m_BackBuffer, D3DXCOLOR(0.0f, 0.2f, 0.4f, 1.0f));
 	//Select which vertex buffer to display
-	UINT stride = sizeof(DX11VERTEX); 
-	UINT offset = 0; 
-	m_DevCon->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset); 
+	UINT stride = sizeof(DX11VERTEX);
+	UINT offset = 0;
+	m_DevCon->IASetVertexBuffers(0, 1, &m_VertexBuffer, &stride, &offset);
 	//Select which primitive type we are using 
-	m_DevCon->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST); 
+	m_DevCon->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	//Draw the vertex buffer to the back buffer
 	m_DevCon->Draw(3, 0);
 	//switch the backbuffer and the front buffer
@@ -259,7 +270,7 @@ void SEngineGraphics::DirectX11::Run()
 	if (Failed(hr))
 	{
 		OutputDebugStringW(L"Failed to Present DirextX11");
-		return; 
+		return;
 	}
 }
 //Shutdown DX11
@@ -270,12 +281,12 @@ void SEngineGraphics::DirectX11::ShutDown()
 
 	//Close and Release all existing COM Objects
 	SafeRelease(m_BackBuffer);
-	SafeRelease(m_SwapChain); 
-	SafeRelease(m_Dev); 
-	SafeRelease(m_DevCon); 
-	SafeRelease(m_VertexShader); 
+	SafeRelease(m_SwapChain);
+	SafeRelease(m_Dev);
+	SafeRelease(m_DevCon);
+	SafeRelease(m_VertexShader);
 	SafeRelease(m_PixelShader);
-	SafeRelease(m_VertexBuffer); 
+	SafeRelease(m_VertexBuffer);
 	SafeRelease(m_InputLayout);
 }
 //Destructor for the DX11 class
