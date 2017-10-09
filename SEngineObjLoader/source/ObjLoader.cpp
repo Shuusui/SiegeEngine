@@ -81,8 +81,8 @@ void SEngine::ObjLoader::LoadFile(const char* strFilename)
 			char* tempBuffer = new char[50];
 			uint8 count = 2;
 			uint8 counter = 0;
-			Vector4 tempVec4(0, 0, 0, 0);
-			float x = 0, y = 0, z = 0, w = 1;
+			Vector4 tempVec4(0, 0, 0, 1);
+			float x = 0, y = 0, z = 0, w = 0;
 			for (uint8 i = 2; i < 256 - 2; i++)
 			{
 				if (buffer[i] != ' ' && buffer[i] != '\0')

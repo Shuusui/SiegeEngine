@@ -1,2 +1,18 @@
-﻿  SEngineObjLoader.vcxproj -> D:\Repos\\SiegeEngine\bin\x64\module\SEngineObjLoader.dll
+﻿  ObjLoader.cpp
+d:\repos\senginemathlib\source\include\vector4.hpp(117): warning C4244: "=": Konvertierung von "const int32" in "float", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(32): warning C4244: "Initialisierung": Konvertierung von "std::streamoff" in "uint32", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(96): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(104): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(112): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(124): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(130): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(158): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(167): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(176): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(200): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(208): warning C4244: "=": Konvertierung von "double" in "float", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(359): warning C4244: "Argument": Konvertierung von "float" in "const unsigned __int64", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(360): warning C4244: "Argument": Konvertierung von "float" in "const unsigned __int64", möglicher Datenverlust
+d:\repos\sengineobjloader\source\objloader.cpp(361): warning C4244: "Argument": Konvertierung von "float" in "const unsigned __int64", möglicher Datenverlust
+  SEngineObjLoader.vcxproj -> D:\Repos\\SiegeEngine\bin\x64\module\SEngineObjLoader.dll
   SEngineObjLoader.vcxproj -> D:\Repos\\SiegeEngine\bin\x64\module\SEngineObjLoader.pdb (Partial PDB)

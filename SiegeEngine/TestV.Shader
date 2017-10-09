@@ -43,10 +43,10 @@ VS_OUTPUT VSMain(VS_INPUT Input)
 {
 	VS_OUTPUT Output;
 
-	float4x4 worldMatrix = {	1.0f, 0.0f, 0.0f, -4.0f,
-								0.0f, 1.0f, 0.0f,0.f,
-								0.0f, 0.0f, 1, 4.0f,
-								0.0f, 0.0f, 0.0f, 1.0f };
+	float4x4 worldMatrix = {	1.0f, 0.0f, 0.0f,	2.0f,
+								0.0f, 1.0f, 0.0f,	1.f,
+								0.0f, 0.0f, 1,		3.0f,
+								0.0f, 0.0f, 0.0f,	1.0f };
 
 	float4x4 rotationX = {		1.0f, 0,		 0,		 0,
 								0, cos(45), -sin(45), 0,

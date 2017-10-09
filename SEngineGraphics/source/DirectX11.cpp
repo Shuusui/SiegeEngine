@@ -184,13 +184,14 @@ void SEngineGraphics::DirectX11::InitGraphics()
 		return;
 	}
 	m_Loader = CreateLoader();
-	m_Loader->LoadFile("..\\Models\\cube.obj");
+	m_Loader->LoadFile("..\\Models\\boat.obj");
 
 	SEngine::OBJECT obj = m_Loader->GetObjectData();
 	uint32 objSize = 0;
 	for (int i = 0; i < obj.ObjGroups.size(); i++)
 	{
 		objSize += obj.ObjGroups[i].VertexDatas.size();
+		objSize++;
 	}
 
 	DX11VERTEX* NotATri = new DX11VERTEX[objSize];
@@ -204,8 +205,7 @@ void SEngineGraphics::DirectX11::InitGraphics()
 				NotATri[i + j].x = obj.ObjGroups[i].VertexDatas[j][k].Vertex.GetX();
 				NotATri[i + j].y = obj.ObjGroups[i].VertexDatas[j][k].Vertex.GetY();
 				NotATri[i + j].z = obj.ObjGroups[i].VertexDatas[j][k].Vertex.GetZ();
-				//NotATri[i + j].w = obj.ObjGroups[i].VertexDatas[j][k].Vertex.GetW();
-				NotATri[i + j].w = 1;
+				NotATri[i + j].w = obj.ObjGroups[i].VertexDatas[j][k].Vertex.GetW();
 				NotATri[i + j].Color = D3DXCOLOR{ 1,0,0,1 };
 			}
 		}
@@ -214,16 +214,12 @@ void SEngineGraphics::DirectX11::InitGraphics()
 	//Create HRESULT to check some functions
 	HRESULT hr;
 
-	//int x = sizeof(DX11VERTEX);
-	//int y = D3D11_REQ_CONSTANT_BUFFER_ELEMENT_COUNT;
-	//x*= objSize; 
-
 	//Create the Vertex Buffer
 	D3D11_BUFFER_DESC DX11BufferDesc{};
 	DX11BufferDesc.ByteWidth = sizeof(DX11VERTEX) * objSize;  //the size is the VERTEX * 3 as seen in Triangle[]
 	DX11BufferDesc.Usage = D3D11_USAGE_DYNAMIC; //write access by CPU and GPU
 	DX11BufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE; //Allow the CPU to write in the buffer
-	DX11BufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER; // use the buffer as a Vertex Buffer
+	DX11BufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER; // use the buffer as a Vertex Buffer
 
 	//Create Subresource data
 	D3D11_SUBRESOURCE_DATA subData{};
